@@ -23,10 +23,10 @@ from collections.abc import AsyncIterator
 from dataclasses import asdict, dataclass
 from http.cookies import SimpleCookie
 from urllib.parse import urlparse
-from fuzzywuzzy import process
 
 import aiohttp
 import mutagen
+from fuzzywuzzy import process
 from mutagen.asf import ASF
 from mutagen.flac import FLAC
 from mutagen.id3 import (
@@ -153,8 +153,10 @@ def real_search(prompt, candidates, cutoff, n):
 
     return matches
 
-def fuzzySort(user_input, collection,n=None):
+
+def fuzzySort(user_input, collection, n=None):
     return [result[0] for result in process.extract(user_input, collection, limit=n)]
+
 
 def find_best_match(user_input, collection, cutoff=0.6, n=1, extra_search_index=None):
     lower_collection = {
@@ -163,8 +165,8 @@ def find_best_match(user_input, collection, cutoff=0.6, n=1, extra_search_index=
     user_input = traditional_to_simple(user_input.lower())
     matches = real_search(user_input, lower_collection.keys(), cutoff, n)
     cur_matched_collection = [lower_collection[match] for match in matches]
-    if len(matches) >= n or extra_search_index is None:      
-        return fuzzySort(user_input, cur_matched_collection,n)
+    if len(matches) >= n or extra_search_index is None:
+        return fuzzySort(user_input, cur_matched_collection, n)
 
     # 如果数量不满足，继续搜索
     lower_extra_search_index = {
@@ -172,10 +174,10 @@ def find_best_match(user_input, collection, cutoff=0.6, n=1, extra_search_index=
         for k, v in extra_search_index.items()
         if v not in cur_matched_collection
     }
-    
+
     matches = real_search(user_input, lower_extra_search_index.keys(), cutoff, n)
     cur_matched_collection += [lower_extra_search_index[match] for match in matches]
-    return fuzzySort(user_input, cur_matched_collection,n)
+    return fuzzySort(user_input, cur_matched_collection, n)
 
 
 # 歌曲排序
