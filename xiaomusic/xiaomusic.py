@@ -78,6 +78,7 @@ class XiaoMusic:
         self.new_record_event = asyncio.Event()
 
         self.all_music = {}
+        self.all_music_pinyin = {}
         self._all_radio = {}  # 电台列表
         self.music_list = {}  # 播放列表 key 为目录名, value 为 play_list
         self.default_music_list_names = []  # 非自定义个歌单
@@ -979,7 +980,8 @@ class XiaoMusic:
                     n=n * 2,
                     extra_search_index=self._extra_index_search,
                 )
-                random.shuffle(real_names)
+                # random.shuffle(real_names)
+
                 real_names = real_names[:n]
             elif name in real_names:
                 # 可以精确匹配，限制只返回一个（保证网页端播放可用）
