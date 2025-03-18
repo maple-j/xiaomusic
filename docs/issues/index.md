@@ -88,6 +88,10 @@ services:
 > - 不知道选哪个套餐可以直接买这个最便宜的 <https://my.racknerd.com/aff.php?aff=11177&pid=903>
 > - 也可以用来部署代理，docker 部署方法见 <https://github.com/hanxi/blog/issues/96>
 
+
+> [!TIP]
+> - 【广告: 一键轻松打造你的专属AI应用】<https://dashi.aliyun.com/activity/aigc?userCode=szqvatm6>
+
 ### 🤐 支持语音口令
 
 - 【播放歌曲】，播放本地的歌曲
@@ -244,7 +248,11 @@ docker build -t xiaomusic .
 ## 🤔 高级篇
 
 - 自定义口令功能 <https://github.com/hanxi/xiaomusic/issues/105>
-- [ ] 缺少一篇教程 [如何写自定义插件](https://github.com/hanxi/xiaomusic/issues/105)
+- <https://github.com/hanxi/xiaomusic/issues/312>
+- <https://github.com/hanxi/xiaomusic/issues/269>
+- <https://github.com/hanxi/xiaomusic/issues/159>
+
+
 
 ## 📢 讨论区
 
